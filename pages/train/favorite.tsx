@@ -5,19 +5,22 @@ import { RailData } from "../../types/Api.type";
 
 export async function getStaticProps() {
     const data = await DataFetch();
-    const time = await data.lastUpdated;
-return { props: { time },
-revalidate: 30 };
-}
-
-const Favorite = ({time}:any) => {
-
-    const date = new Date(time);
+    const times = await data.lastUpdated;
+    const date = new Date(times);
     
     const m = date.getMonth() + 1;
     const d = date.getDate();
     const h = date.getHours();
     const mm = date.getMinutes();
+
+    const time = `${m}月${d}日${h}時${mm}分`;
+
+return { props: { time },
+revalidate: 10, };
+};
+
+const Favorite = ({time}:any) => {
+
 
     const [favorites,setFavorite] = useState<RailData[]|null>([]);
 
@@ -42,7 +45,7 @@ const Favorite = ({time}:any) => {
     }
     return (
         <div>
-            <p className="mb-6 text-right mr-3">更新時間:{`${m}月${d}日${h}時${mm}分`}</p>
+            <p className="mb-6 text-right mr-3">更新時間:{time}</p>
             {favorites ? 
             <>
                 {favorites.map((e:any,key:number) => (

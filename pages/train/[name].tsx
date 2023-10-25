@@ -8,12 +8,6 @@ type Props = {
     data:RailData[],
 }
 
-export async function getStaticProps() {
-    const {data} = await DataFetch();
-return { props: { data },
-revalidate: 30};
-}
-
 export const getStaticPaths = async () => {
     return {
       paths: [], // アプリのビルド時にはパスに何が入るかが分からないので空でOK
@@ -21,8 +15,17 @@ export const getStaticPaths = async () => {
     };
   };
 
+  
+export async function getStaticProps() {
+    const {data} = await DataFetch();
+return { props: { data },
+revalidate: 30};
+}
+
+
 
 const Line = ({data}:Props) => {
+
     const router = useRouter();
     const {name}:any = router.query;
     let id:number = 0;
