@@ -9,8 +9,10 @@ export async function getStaticProps() {
     const area = Object.entries(data.areaList);
     const time = data.lastUpdated;
 
-return { props: { area ,time}};
-}
+return { props: { area ,time},
+revalidate: 30
+};
+};
 
 const HOME : NextPage = ({area,time}:any) => {
     const dispatch = useDispatch();

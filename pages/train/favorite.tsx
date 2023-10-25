@@ -3,10 +3,11 @@ import { DataFetch } from "../../components/function/Fetch";
 import { RailData } from "../../types/Api.type";
 
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const data = await DataFetch();
     const time = await data.lastUpdated;
-return { props: { time } };
+return { props: { time },
+revalidate: 30 };
 }
 
 const Favorite = ({time}:any) => {

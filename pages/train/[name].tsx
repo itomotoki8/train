@@ -8,10 +8,19 @@ type Props = {
     data:RailData[],
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const {data} = await DataFetch();
-return { props: { data }};
+return { props: { data },
+revalidate: 30};
 }
+
+export const getStaticPaths = async () => {
+    return {
+      paths: [], // アプリのビルド時にはパスに何が入るかが分からないので空でOK
+      fallback: 'blocking', // 👈 ポイント
+    };
+  };
+
 
 const Line = ({data}:Props) => {
     const router = useRouter();

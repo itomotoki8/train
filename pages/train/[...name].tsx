@@ -12,8 +12,8 @@ type Props = {
 
 export async function getServerSideProps() {
     const datas = await DataFetch();
-    const time = datas.lastUpdated;
-    const {data} = datas;
+    const time = await datas.lastUpdated;
+    const {data} = await datas;
 
 return { props: { data, time }};
 }
