@@ -7,7 +7,7 @@ const Layouts = ({children}:any) => {
         <>
             <header className="text-white text-xl bg-blue-200 flex h-16 mb-6 items-center justify-around">
                 <button type="button" onClick={router.back} className="lg:hover:text-slate-700">戻る</button>
-                <Link href="/train" className="ml-20 lg:hover:text-slate-700">ホーム</Link>
+                <Link href="/" className="ml-20 lg:hover:text-slate-700">ホーム</Link>
                 <Link href="/train/favorite"><div className="ml-20">お気に入り</div></Link>
             </header>
             <main>

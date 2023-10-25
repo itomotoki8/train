@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { DataFetch } from "../../../components/function/Fetch";
-import { RailData, Serach } from "../../../types/Api.type";
+import { DataFetch } from "../../components/function/Fetch";
+import { RailData, Serach } from "../../types/Api.type";
 
 type Props = {
     data:RailData[],
@@ -45,11 +45,10 @@ const Line = ({data}:Props) => {
     };
 
     const line:RailData[]|any = data[id];
-    console.log(line);
 
     const [searchName,setSearchName] = useState<string>("");
 
-    const [aaa,setA] = useState<Serach[]>([]); 
+    const [searchData,setSearchData] = useState<Serach[]>([]); 
 
     const search = () => {
         const kekka:Serach[] = [];
@@ -60,8 +59,9 @@ const Line = ({data}:Props) => {
                 kekka.push(e);
             }
         })
-        if(kekka.length !== 0) {
-            setA(kekka);
+        if(kekka.length !== 0 &&kekka.length != line.length) {
+            setSearchData(kekka);
+            setSearchName("");
         }
 
     }
@@ -72,10 +72,10 @@ const Line = ({data}:Props) => {
             <input onChange={(e) => setSearchName(e.target.value)} value={searchName} type="text" className="border border-slate-950 w-[70vw]" placeholder="検索"/>
             <button onClick={search} className="border border-slate-950">検索</button>
             </div>
-            {aaa.length !== 0 && 
+            {searchData.length !== 0 && 
             <div className="mt-5 border-b pb-3 border-slate-900">
                 <p>検索結果</p>
-                {aaa.map((e) => (
+                {searchData.map((e) => (
                                 <>
                                 <ul className="mx-5 mt-3" key={e.key}>
                                     <li>{e.companyName}</li>

@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import {useSelector } from 'react-redux'
-import { DataFetch } from '../../../components/function/Fetch';
-import { RailData } from '../../../types/Api.type';
+import { DataFetch } from '../../components/function/Fetch';
+import { RailData } from '../../types/Api.type';
 
 
 type Props = {
