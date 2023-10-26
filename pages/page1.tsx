@@ -49,16 +49,17 @@ revalidate: 30};
 
 const Page1 = ({data}:any) => {
 
-    const num = data.length;
+    let a = [];
+    a = data;
+
     return (
         <div>
-            {data.map((e:Treads) => (
+            {a && data.map((e:Treads) => (
                 <>
                 {e.title}
                 <br />
                 </>
             ))}
-            {num}
             <br />
             <Link href="/"><a>ホーム</a></Link>
         </div>

@@ -17,6 +17,7 @@ revalidate: 5
 const HOME : NextPage = ({area,time}:any) => {
     const dispatch = useDispatch();
     const date = new Date(time);
+
     
     const m = date.getMonth() + 1;
     const d = date.getDate();
