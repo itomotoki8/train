@@ -10,12 +10,11 @@ export async function getStaticProps() {
     const time = data.lastUpdated;
 
 return { props: { area ,time},
-revalidate: 30
+revalidate: 5
 };
 };
 
 const HOME : NextPage = ({area,time}:any) => {
-    console.log(time);
     const dispatch = useDispatch();
     const date = new Date(time);
     
@@ -23,11 +22,12 @@ const HOME : NextPage = ({area,time}:any) => {
     const d = date.getDate();
     const h = date.getHours();
     const mm = date.getMinutes();
+    const ss = date.getSeconds();
     
     return (
         <div>
-            <Link href="page1">page1</Link>
-            <p className="mb-6 text-right mr-3">更新時間:{`${m}月${d}日${h}時${mm}分`}</p>
+            <Link href="page1"><a>page1</a></Link>
+            <p className="mb-6 text-right mr-3">更新時間:{`${m}月${d}日${h}時${mm}分${ss}秒`}</p>
             <ul className="flex flex-col items-center text-xl gap-10">
             {area.map((e:any) => (
                 <>

@@ -60,7 +60,7 @@ const Page1 = ({data}:any) => {
             ))}
             {num}
             <br />
-            <Link href="/">ホーム</Link>
+            <Link href="/"><a>ホーム</a></Link>
         </div>
     );
 }

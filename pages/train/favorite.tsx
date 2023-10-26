@@ -6,14 +6,13 @@ import { GetStaticProps } from "next";
 
 export const getStaticProps:GetStaticProps = async () => {
     const data = await DataFetch();
-    const time = await data.lastUpdated;    
+    const time = await data.lastUpdated; 
 
 return { props: { time },
-revalidate: 30};
+revalidate: 5};
 };
 
 const Favorite = ({time}:any) => {
-    console.log("aaaaaa");
 
     // const m = time.getMonth() + 1;
     // const d = time.getDate();
@@ -21,9 +20,6 @@ const Favorite = ({time}:any) => {
     // const mm = time.getMinutes();
 
     // const times = `${m}月${d}日${h}時${mm}分`;
-
-    const times = time;
-
 
     const [favorites,setFavorite] = useState<RailData[]|null>([]);
 
@@ -48,7 +44,7 @@ const Favorite = ({time}:any) => {
     }
     return (
         <div>
-            <p className="mb-6 text-right mr-3">更新時間:{times}</p>
+            <p className="mb-6 text-right mr-3">更新時間:{time && time}</p>
             {favorites ? 
             <>
                 {favorites.map((e:any,key:number) => (
