@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react";
 import { DataFetch } from "../../components/function/Fetch";
 import { RailData } from "../../types/Api.type";
+import { GetStaticProps } from "next";
 
 
-export async function getStaticProps() {
+export const getStaticProps:GetStaticProps = async () => {
     const data = await DataFetch();
-    const times = await data.lastUpdated;
-    const date = new Date(times);
-    
-    const m = date.getMonth() + 1;
-    const d = date.getDate();
-    const h = date.getHours();
-    const mm = date.getMinutes()+9;
-
-    const time = `${m}月${d}日${h}時${mm}分`;
+    const time = await data.lastUpdated;    
 
 return { props: { time },
-revalidate: 10, };
+revalidate: 30};
 };
 
 const Favorite = ({time}:any) => {
     console.log(time);
+
+    // const m = time.getMonth() + 1;
+    // const d = time.getDate();
+    // const h = time.getHours();
+    // const mm = time.getMinutes();
+
+    // const times = `${m}月${d}日${h}時${mm}分`;
+
+    const times = time;
 
 
     const [favorites,setFavorite] = useState<RailData[]|null>([]);
@@ -46,7 +48,7 @@ const Favorite = ({time}:any) => {
     }
     return (
         <div>
-            <p className="mb-6 text-right mr-3">更新時間:{time}</p>
+            <p className="mb-6 text-right mr-3">更新時間:{times}</p>
             {favorites ? 
             <>
                 {favorites.map((e:any,key:number) => (
