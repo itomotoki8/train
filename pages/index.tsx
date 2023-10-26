@@ -15,6 +15,7 @@ revalidate: 30
 };
 
 const HOME : NextPage = ({area,time}:any) => {
+    console.log(time);
     const dispatch = useDispatch();
     const date = new Date(time);
     

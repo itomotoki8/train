@@ -11,7 +11,7 @@ export async function getStaticProps() {
     const m = date.getMonth() + 1;
     const d = date.getDate();
     const h = date.getHours();
-    const mm = date.getMinutes();
+    const mm = date.getMinutes()+9;
 
     const time = `${m}月${d}日${h}時${mm}分`;
 
@@ -20,6 +20,7 @@ revalidate: 10, };
 };
 
 const Favorite = ({time}:any) => {
+    console.log(time);
 
 
     const [favorites,setFavorite] = useState<RailData[]|null>([]);
