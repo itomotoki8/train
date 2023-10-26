@@ -13,7 +13,7 @@ revalidate: 30};
 };
 
 const Favorite = ({time}:any) => {
-    console.log(time);
+    console.log("aaaaaa");
 
     // const m = time.getMonth() + 1;
     // const d = time.getDate();

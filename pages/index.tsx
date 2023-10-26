@@ -26,6 +26,7 @@ const HOME : NextPage = ({area,time}:any) => {
     
     return (
         <div>
+            <Link href="page1">page1</Link>
             <p className="mb-6 text-right mr-3">更新時間:{`${m}月${d}日${h}時${mm}分`}</p>
             <ul className="flex flex-col items-center text-xl gap-10">
             {area.map((e:any) => (

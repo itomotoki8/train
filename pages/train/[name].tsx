@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DataFetch } from "../../components/function/Fetch";
 import { RailData, Serach } from "../../types/Api.type";
 
